@@ -46,7 +46,7 @@ var myArgs = process.argv.splice(2);
 //   // '100',
 //   'pipe:1',
 // ];
-console.log("aaa: ", myArgs[0]);
+// console.log("aaa: ", myArgs[0]);
 const params = JSON.parse(fs.readFileSync(myArgs[0]));
 const ffmpeg = spawn(ffmpegPath, params, {
   stdio: ['ignore', 'pipe', 'ignore'],
