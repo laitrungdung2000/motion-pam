@@ -4,43 +4,50 @@ process.env.NODE_ENV = 'development';
 const P2P = require('pipe2pam');
 const PamDiff = require('../index');
 const ffmpegPath = require('../lib/ffmpeg');
+const fs = require('fs');
+// const rawdata = fs.readFileSync('./rtsp_link.json');
+// const rtsp_link = JSON.parse(rawdata);
+// console.log(rtsp_link);
 const ChildProcess = require('child_process');
 const spawn = ChildProcess.spawn;
 const execFile = ChildProcess.execFile;
-const params = [
-  '-loglevel',
-  'quiet',
-  /* use hardware acceleration */
-  '-hwaccel',
-  'auto', // vda, videotoolbox, none, auto
-  /* use an artificial video input */
-  // '-re',
-  // '-f',
-  // 'lavfi',
-  // '-i',
-  // 'testsrc=size=1920x1080:rate=15',
-  /* use an rtsp ip cam video input */
-  '-rtsp_transport',
-  'tcp',
-  '-i',
-  'rtsp://admin:Viettel123@@220.231.101.118:554/profile4/media.smp',
-  /* set output flags */
-  '-an',
-  '-c:v',
-  'pam',
-  '-pix_fmt',
-  'gray',
-  // 'rgba',
-  // 'rgb24',
-  '-f',
-  'image2pipe',
-  '-vf',
-  'fps=15,scale=400:225', // 1920:1080 scaled down = 640:360, 400:225, 384:216, 368:207, 352:198, 336:189, 320:180
-  // 'fps=1,scale=iw*1/6:ih*1/6',
-  // '-frames',
-  // '100',
-  'pipe:1',
-];
+var myArgs = process.argv.splice(2);
+// const params = [
+//   '-loglevel',
+//   'quiet',
+//   /* use hardware acceleration */
+//   '-hwaccel',
+//   'auto', // vda, videotoolbox, none, auto
+//   /* use an artificial video input */
+//   // '-re',
+//   // '-f',
+//   // 'lavfi',
+//   // '-i',
+//   // 'testsrc=size=1920x1080:rate=15',
+//   /* use an rtsp ip cam video input */
+//   '-rtsp_transport',
+//   'tcp',
+//   '-i',
+//   'rtsp://admin:Viettel123@@220.231.101.118:554/profile4/media.smp',
+//   /* set output flags */
+//   '-an',
+//   '-c:v',
+//   'pam',
+//   '-pix_fmt',
+//   'gray',
+//   // 'rgba',
+//   // 'rgb24',
+//   '-f',
+//   'image2pipe',
+//   '-vf',
+//   'fps=2,scale=400:225', // 1920:1080 scaled down = 640:360, 400:225, 384:216, 368:207, 352:198, 336:189, 320:180
+//   // 'fps=1,scale=iw*1/6:ih*1/6',
+//   // '-frames',
+//   // '100',
+//   'pipe:1',
+// ];
+console.log("aaa: ", myArgs[0]);
+const params = JSON.parse(fs.readFileSync(myArgs[0]));
 const ffmpeg = spawn(ffmpegPath, params, {
   stdio: ['ignore', 'pipe', 'ignore'],
 });
