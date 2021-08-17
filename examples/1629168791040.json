@@ -1,1 +1,0 @@
-["-loglevel","quiet","-hwaccel","auto","-rtsp_transport","tcp","-i","rtsp://admin:Viettel123@@220.231.101.118:554/profile4/media.smp","-an","-c:v","pam","-pix_fmt","gray","-f","image2pipe","-vf","fps=2,scale=400:225","pipe:1"]
