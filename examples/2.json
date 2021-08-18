@@ -1,0 +1,1 @@
+["-loglevel","quiet","-hwaccel","auto","-rtsp_transport","tcp","-i","rtsp://117.4.91.147:578/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream","-an","-c:v","pam","-pix_fmt","gray","-f","image2pipe","-vf","fps=2,scale=400:225","pipe:1"]

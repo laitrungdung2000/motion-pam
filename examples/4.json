@@ -1,0 +1,1 @@
+["-loglevel","quiet","-hwaccel","auto","-rtsp_transport","tcp","-i","rtsp://ubtp:uybantp123@117.7.233.212:554/cam/realmonitor?channel=12&subtype=1","-an","-c:v","pam","-pix_fmt","gray","-f","image2pipe","-vf","fps=2,scale=400:225","pipe:1"]

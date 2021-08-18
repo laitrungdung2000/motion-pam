@@ -46,7 +46,7 @@ var myArgs = process.argv.splice(2);
 //   // '100',
 //   'pipe:1',
 // ];
-// console.log("aaa: ", myArgs[0]);
+console.log("aaa: ", myArgs);
 const params = JSON.parse(fs.readFileSync(myArgs[0]));
 const ffmpeg = spawn(ffmpegPath, params, {
   stdio: ['ignore', 'pipe', 'ignore'],
@@ -62,7 +62,7 @@ const p2p = new P2P();
 let counter = 0;
 p2p.on('pam', data => {
   // you do not have to listen to this event if you are just piping this data to pam-diff
-  console.log(`received pam ${++counter}`);
+  console.log(`received pam ${myArgs[1]}`);
 });
 const pamDiff = new PamDiff({ difference: 5, percent: 50, response: 'bounds', draw: true});
 pamDiff.on('diff', data => {

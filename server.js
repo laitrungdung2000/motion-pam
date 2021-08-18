@@ -45,7 +45,8 @@ rtsp_link.forEach((rtsp, index) => {
     });
     var cameraParams = [
         __dirname + '/examples/example.js',
-        __dirname + `/examples/${index}.json`
+        __dirname + `/examples/${index}.json`,
+        index
     ]
     console.log(cameraParams)
     var cameraProcess = spawn('node', cameraParams);
